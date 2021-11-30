@@ -43,6 +43,7 @@
 
   <ItemGroup>
     <None Remove="apps\Dependencies\ClientApp\*" />
+    <EmbeddedResource Include="apps\Dependencies\ClientApp2\index.html" />
     <EmbeddedResource Include="apps\Dependencies\ClientApp\*" />
   </ItemGroup>
 
