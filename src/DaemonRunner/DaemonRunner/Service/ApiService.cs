@@ -13,6 +13,7 @@ using System;
 using JoySoftware.HomeAssistant.Extensions;
 using NetDaemon.Service.Api;
 using NetDaemon.Common.Configuration;
+using NetDaemon.Http;
 
 namespace NetDaemon.Service
 {
@@ -45,6 +46,7 @@ namespace NetDaemon.Service
             services.AddSingleton(s => s.GetRequiredService<NetDaemonHost>().HassEventsObservable);
 
             services.AddHttpClient();
+            services.AddRuntimeMiddleware();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -62,6 +64,7 @@ namespace NetDaemon.Service
                 };
                 app.UseWebSockets(webSocketOptions);
                 app.UseMiddleware<ApiWebsocketMiddleware>();
+                app.UseRuntimeMiddleware();
             }
         }
     }
